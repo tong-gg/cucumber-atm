@@ -70,4 +70,20 @@ public class StepDefATM {
                      bank.findCustomer(id).getAccount().getBalance());
     }
 
+    // deposit test-case
+    @When("I deposit {float} to my account")
+    public void i_deposit_to_my_account(double amount) {
+        atm.deposit(amount);
+    }
+
+    @When("I deposit with negative number {float} to my account")
+    public void i_deposit_with_negative_number_to_my_account (double amount) throws ArithmeticException {
+        assertThrows(ArithmeticException.class, () -> atm.deposit(amount));
+    }
+
+    @Then("I cannot deposit and balance is {float}")
+    public void i_cannot_deposit_and_balance_is (double balance) {
+        assertEquals(balance, atm.getBalance());
+    }
+
 }
