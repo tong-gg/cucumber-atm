@@ -26,7 +26,10 @@ public class BankAccount {
       Deposits money into the account.
       @param amount the amount of money to withdraw
    */
-   public void deposit(double amount) {
+   public void deposit(double amount) throws ArithmeticException{
+      if (amount < 0) {
+         throw new ArithmeticException("cannot deposit, your amount must be more than 1 baht.");
+      }
       balance = balance + amount;
    }
 
